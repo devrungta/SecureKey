@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SecureKey</string>
+    <string name="userid">Username/Registered E-mail</string>
+    <string name="password_hint">Password</string>
+    <string name="Login_btn">Login</string>
+    <string name="Send_OTP">Send OTP</string>
+    <string name="Verify_OTP_Button_hint">Verify OTP</string>
+    <string name="Verify_OTP_Button">Verify Using OTP</string>
+</resources>

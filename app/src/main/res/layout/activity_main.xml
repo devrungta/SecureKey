@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:fontFamily="sans-serif-black"
+            android:textSize="30sp"
+            android:accessibilityHeading="true"
+            android:text="@string/app_name" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+        <EditText
+            android:id="@+id/Username"
+            android:autofillHints="name"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="text"
+            android:hint="@string/userid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            tools:layout_editor_absoluteX="98dp"
+            tools:layout_editor_absoluteY="107dp" />
+
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_below="@id/Username"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/password_hint"
+            android:inputType="textPassword" />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Password"
+            android:layout_centerInParent="true"
+            android:layout_margin="60dp"
+            android:text="@string/Login_btn"
+            />
+
+        <EditText
+            android:id="@+id/VerifyOTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:visibility="gone"
+            android:hint="@string/Verify_OTP_Button_hint"
+            android:autofillHints="password"
+            android:layout_below="@+id/Password"/>
+
+        <Button
+            android:id="@+id/Verify_Using_OTP_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_button"
+            android:layout_centerHorizontal="true"
+            android:text="@string/Verify_OTP_Button" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Verify_Using_OTP_btn"
+            android:text="Button" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
