@@ -27,7 +27,8 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:id="@+id/center_layout">
         <EditText
             android:id="@+id/Username"
             android:autofillHints="name"
@@ -77,17 +78,76 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/login_button"
             android:layout_centerHorizontal="true"
-            android:text="@string/Verify_OTP_Button" />
+            android:text="@string/Verify_OTP_Button"
+            />
 
-        <Button
-            android:id="@+id/button"
+        <EditText
+            android:id="@+id/new_user_E_mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@id/Verify_Using_OTP_btn"
-            android:text="Button" />
+            android:ems="10"
+            android:visibility="gone"
+            android:hint="@string/new_user_E_mail"
+            android:layout_below="@id/Confirm_password"
+            android:inputType="text"
+            android:autofillHints="emailAddress"/>
 
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_user_E_mail"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:id="@+id/gender"
+            >
 
+         <RadioButton
+            android:id="@+id/Male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Male"
+             />
+
+         <RadioButton
+            android:id="@+id/Female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Female"/>
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/Confirm_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:visibility="gone"
+            android:hint="@string/Confirm_Password"
+            android:autofillHints="password"
+            android:layout_below="@id/Password"/>
+
+        <EditText
+            android:id="@+id/Phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:visibility="gone"
+            android:inputType="phone"
+            android:layout_below="@id/gender"
+
+           android:hint="@string/Phone_Number"
+            />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/new_Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/center_layout"
+
+        android:text="@string/new_Register" />
 
 
 </RelativeLayout>
