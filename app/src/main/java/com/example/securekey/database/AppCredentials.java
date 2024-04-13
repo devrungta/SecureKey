@@ -13,4 +13,13 @@ public class AppCredentials {
             + COLUMN_APP_PASSWORD + " TEXT,"
             + "FOREIGN KEY (" + COLUMN_USER_ID + ") REFERENCES " + Usertable.TABLE_NAME + "(" + Usertable.COLUMN_USER_ID + ")"
             + ")";
+    private long userId;
+    private String appName;
+    private String appPassword;
+
+    public AppCredentials(String appName, String appPassword,long userId) {
+        this.userId = userId;
+        this.appName = appName;
+        this.appPassword = appPassword;
+    }
 }
