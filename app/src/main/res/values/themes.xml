@@ -2,8 +2,18 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.SecureKey" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+
+            <item name="colorPrimary">#191970</item> <!-- Midnight Blue -->
+            <item name="colorPrimaryVariant">#000080</item> <!-- Dark Blue -->
+            <item name="colorOnPrimary">#C0C0C0</item> <!-- Silver -->
+            <item name="colorSecondary">#FFD700</item> <!-- Gold -->
+
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
     <style name="Theme.SecureKey" parent="Base.Theme.SecureKey" />
+
+
+
+
 </resources>

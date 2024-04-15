@@ -130,72 +130,78 @@ public class User_specific_Activity extends AppCompatActivity implements AppList
         View dialogView = getLayoutInflater().inflate(R.layout.add_app_dialogue, null);
         builder.setView(dialogView);
         EditText appName = dialogView.findViewById(R.id.app_name);
-        viewModel = new  ViewModelProvider(this).get(MyViewModel.class);
-        viewModel.getEditTextValue().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                appName.setText(s);
-            }
-        });
+        viewModel = new ViewModelProvider(this).get(MyViewModel.class);
+        TextView generatedPasswordTextView = dialogView.findViewById(R.id.generated_password);
+        Button regenerateButton = dialogView.findViewById(R.id.regenerate);
+        Button acceptButton = dialogView.findViewById(R.id.accept);
+
+        // Set up text watcher to observe changes in the app name EditText
         appName.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Update the ViewModel with the new app name asynchronously
                 viewModel.setEditTextValue(s.toString());
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(Editable s) {}
+        });
 
+
+        // Observe changes in the app name asynchronously
+        viewModel.getEditTextValue().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                // Update the app name EditText with the value from the ViewModel
+                appName.setText(s);
             }
         });
-        TextView generatedPasswordTextView = dialogView.findViewById(R.id.generated_password);
-        Button regenerateButton = dialogView.findViewById(R.id.regenerate);
-        Button acceptButton = dialogView.findViewById(R.id.accept);
-        String generatedPassword = generatepassword();
-        generatedPasswordTextView.setText(generatedPassword);
+
+        // Set up click listener for the regenerate button
         regenerateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Generate a new password and update the generated password TextView
                 String newGeneratedPassword = generatepassword();
                 generatedPasswordTextView.setText(newGeneratedPassword);
             }
         });
-        acceptButton.setOnClickListener(new View.OnClickListener() {
 
+        // Set up click listener for the accept button
+        acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                add_app();
-
-            }
-
-            private void add_app() {
-                String appNameText = appName.getText().toString().trim();
-                String generatedPassword = generatedPasswordTextView.getText().toString().trim();
-
-                Log.d("AddAppDialogue", "App Name: " + appNameText);
-                Log.d("AddAppDialogue", "Generated Password: " + generatedPassword);
-                Log.d("AddAppDialogue", "User ID: " + user_id);
-
-                if (!TextUtils.isEmpty(appNameText)) {
-                    App newApp = new App(appNameText, generatedPassword, user_id);
-                    apps.add(newApp);
-                    adapter.notifyDataSetChanged(); // Notify the adapter of the data change
-                    alertDialog.dismiss(); // Dismiss the dialog
-                    Log.d("AddAppDialogue", "New App Added: " + newApp.getName());
-                } else {
-                    Toast.makeText(User_specific_Activity.this, "Enter an app name please.", Toast.LENGTH_SHORT).show();
-                }
+                // Call the add_app method to add the new app
+                add_app(appName.getText().toString(), generatedPasswordTextView.getText().toString().trim());
             }
         });
 
+        // Show the dialogvoid
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+
+        private void add_app(String appName, String generatedPassword) {
+            Log.d("AddAppDialogue", "App Name: " + appName);
+            Log.d("AddAppDialogue", "Generated Password: " + generatedPassword);
+            Log.d("AddAppDialogue", "User ID: " + user_id);
+
+            if (!TextUtils.isEmpty(appName)) {
+                App newApp = new App(appName, generatedPassword, user_id);
+                apps.add(newApp);
+                adapter.notifyDataSetChanged(); // Notify the adapter of the data change
+                alertDialog.dismiss(); // Dismiss the dialog
+                Log.d("AddAppDialogue", "New App Added: " + newApp.getName());
+            } else {
+                Toast.makeText(User_specific_Activity.this, "Enter an app name please.", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
 
     private String generatepassword() {
         String allowedChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+";

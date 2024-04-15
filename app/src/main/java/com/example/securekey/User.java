@@ -17,9 +17,7 @@ public class User {
         this.gender = gender;
     }
 
-
-
-    // Getter methods
+    // Getters for all fields
     public long getUserId() {
         return userId;
     }
